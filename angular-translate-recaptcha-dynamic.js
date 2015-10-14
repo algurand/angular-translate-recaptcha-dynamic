@@ -3,20 +3,32 @@
 
 angular.module('pascalprecht.translate')
 	.directive('agrRecaptcha', function ($rootScope, $window, $translate) {
-    
+
     var lang;
     
     var updateRecaptcha = function(scope, element, attrs){
+      console.log(lang);
+      console.log($translate.use());
       if (lang == $translate.use())
           return;
       lang = $translate.use();  
       
-      angular.element('#captchaScript').remove();
-      var s = angular.element('<script id="captchaScript" src="//www.google.com/recaptcha/api.js?render=explicit&onload=agrRecaptchaLoaded&hl=' + lang + '"></script>').appendTo(angular.element('head'));
+      
+      angular.element(document).find('#captchaScript').remove();
+      
+      var po = document.createElement('script'); 
+      po.id="captchaScript";
+      po.type = 'text/javascript';
+      po.async = true;
+      po.src =  '//www.google.com/recaptcha/api.js?render=explicit&onload=agrRecaptchaLoaded&hl=' + lang;
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+      
+      //var s = angular.element('<script id="captchaScript" src="//www.google.com/recaptcha/api.js?render=explicit&onload=agrRecaptchaLoaded&hl=' + lang + '"><\/script>');
+      //angular.element(document).find('head').append(s);
       
       $window.agrRecaptchaLoaded = function(){
         element.html('');
-        angular.element('.pls-container').remove();
+        angular.element(document).find('.pls-container').remove();
         var par = {};
         attrs.key ? par.sitekey = attrs.key : null;
         attrs.theme ? par.theme = attrs.theme : null;
@@ -29,6 +41,7 @@ angular.module('pascalprecht.translate')
         
         par['expired-callback'] = function (){
           scope.onExpire();
+          
         }
         
         $window.grecaptcha.render(element[0], par);
@@ -48,7 +61,7 @@ angular.module('pascalprecht.translate')
       link: function(scope, element, attrs){
         if (!attrs.key) 
            throw new Error('You need to set the "key" attribute to your public reCaptcha key. If you don\'t have a key, please get one from https://www.google.com/recaptcha/admin/create');
-         
+        
         updateRecaptcha(scope, element, attrs);
         $rootScope.$on('$translateChangeSuccess', function (event, data) {
           updateRecaptcha(scope, element, attrs);
