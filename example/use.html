@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.1/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-translate/2.8.1/angular-translate.min.js"></script>
+  <script src="../angular-translate-recaptcha-dynamic.js"></script>
+  <script src="app.js"></script>
+</head>
+<body ng-app="test" ng-controller="testCtrl">
+<select ng-model="selectedLanguage" ng-change="changeLanguage()">
+	<option value="en">English</option>
+  <option value="uk">Українська</option>
+</select>
+<p translate="GREETING"></p>
+  <form class="form" name="form" ng-submit="register(form)" novalidate>
+    <input type="text" name="name" placeholder="{{'NAME'|translate}}"/>
+    <div
+      agr-recaptcha
+      key="6LdglQ4TAAAAANvsbiUZ4kiQFYOHn2MLgenSExGk"
+      on-success="verified(response)"
+      on-expire="expired()"
+      on-create="created()"
+    >
+    </div>
+    <input type="submit" value="Sumbit" />
+  </form>
+</body>
+</html>
