@@ -1,0 +1,9 @@
+{
+    "name": "agrRecaptcha",
+    "version": "0.0.1",
+    "main":  "angular-translate-recaptcha-dynamic.js",
+    "dependencies": {
+        "angular": "*",
+        "angular-translate": ""
+    }
+}
