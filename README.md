@@ -1,3 +1,8 @@
+AngularJS [google reCAPTCHA v2](https://support.google.com/recaptcha/?hl=en#6081880) directive
+
+Generate reCAPTCHA for current language. Regenerate reCAPTCHA when language changes.
+
+
 ## Usage
 
 ### via Bower
