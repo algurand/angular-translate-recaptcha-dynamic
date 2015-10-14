@@ -4,6 +4,6 @@
     "main":  "angular-translate-recaptcha-dynamic.js",
     "dependencies": {
         "angular": "*",
-        "angular-translate": ""
+        "angular-translate": "*"
     }
 }
