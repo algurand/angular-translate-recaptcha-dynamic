@@ -1,5 +1,10 @@
 'use strict';
-//google recaptcha v2
+
+/**
+ * angular-recaptcha build:2015-10-14
+ * https://github.com/algurand/angular-translate-recaptcha-dynamic 
+ * Copyright (c) 2015 algurand
+**/
 
 angular.module('pascalprecht.translate')
 	.directive('agrRecaptcha', function ($rootScope, $window, $translate) {
