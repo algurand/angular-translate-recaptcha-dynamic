@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "main": "angular-translate-recaptcha-dynamic.js",
   "dependencies": {
-    "angular": ">=1.4.7",
-    "angular-translate": ">=2.8.0"
+    "angular": "1.*",
+    "angular-translate": "2.*"
   }
 }
