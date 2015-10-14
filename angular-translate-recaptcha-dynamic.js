@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * angular-recaptcha build:2015-10-14
+ * angular-translate-recaptcha-dynamic build:2015-10-14
  * https://github.com/algurand/angular-translate-recaptcha-dynamic 
  * Copyright (c) 2015 algurand
 **/
