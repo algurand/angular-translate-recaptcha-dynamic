@@ -8,4 +8,4 @@ $ bower install angular-translate-recaptcha-dynamic
 
 ## License
 
-Licensed under MIT. See more details at https://github.com/algurand/angular-translate-recaptcha-dynamic/LICENSE
+Licensed under MIT. See more details at https://github.com/algurand/angular-translate-recaptcha-dynamic/blob/master/LICENSE
