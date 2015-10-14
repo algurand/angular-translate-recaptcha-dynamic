@@ -1,9 +1,9 @@
 {
-    "name": "agrRecaptcha",
-    "version": "0.0.1",
-    "main":  "angular-translate-recaptcha-dynamic.js",
-    "dependencies": {
-        "angular": ">=angular": "1.4.7",
-        "angular-translate": ">="2.8.0"
-    }
+  "name": "agrRecaptcha",
+  "version": "0.0.1",
+  "main": "angular-translate-recaptcha-dynamic.js",
+  "dependencies": {
+    "angular": ">=1.4.7",
+    "angular-translate": ">=2.8.0"
+  }
 }
