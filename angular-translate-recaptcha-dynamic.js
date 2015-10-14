@@ -7,7 +7,7 @@ angular.module('pascalprecht.translate')
     var lang;
     
     var updateRecaptcha = function(scope, element, attrs){
-      if (lang == $translate.use())
+      if (lang == $translate.use() && $translate.use())
           return;
       lang = $translate.use();  
       
