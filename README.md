@@ -33,7 +33,7 @@ See [the example file](example/use.html) for a quick usage example.
 ```html
 <div
     agr-recaptcha
-    key="'---- YOUR PUBLIC KEY GOES HERE ----'"
+    key="---- YOUR PUBLIC KEY GOES HERE ----"
     on-create="created()"
     on-success="verified(response)"
     on-expire="expired()"
@@ -94,7 +94,7 @@ To validate this object from your server, you need to use the API described in t
 Other Parameters
 ----------------
 
-You can optionally pass additional parameters [grecaptcha.render parameters](https://developers.google.com/recaptcha/docs/display#render_param) __theme__, __type__, __size__, __tabindex__ the captcha should use, as an html attribute:
+You can optionally pass additional [grecaptcha.render parameters](https://developers.google.com/recaptcha/docs/display#render_param) __theme__, __type__, __size__, __tabindex__ the captcha should use, as an html attribute:
 
 ```html
     <div
