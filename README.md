@@ -39,10 +39,9 @@ See [the example file](example/use.html) for a quick usage example.
 <div
     agr-recaptcha
     key="---- YOUR PUBLIC KEY GOES HERE ----"
-    on-create="created()"
-    on-success="verified(response)"
-    on-expire="expired()"
+    response="__res__"
 ></div>
+<p ng-hide="__res__">Are you robot?</p>
 ```
 
 Here, the `key` attribute is passed to the directive's scope, so you can use either a property in your scope or just a hardcoded string. Be careful to use your public key, not your private one.
@@ -66,26 +65,26 @@ There are three listeners you can use with the directive, `on-create`, `on-succe
 app.controller('myCtrl', ['$scope', function ($scope) {
   
   $scope.created = function(){
-    $scope.response = null;
+    console.log('created');
   };
   
   $scope.verified = function (response) {
-    $scope.response = response;
+    console.log('verified');
 	};
 
 	$scope.expired = function() {
-		$scope.response = null;
+		console.log('expired');
 	};
 
   //form submission
   $scope.register = function(form) {
     
-    if(form.$valid && $scope.response) {
+    if(form.$valid && $scope.res) {
       Auth.createUser({
         name: $scope.user.name,
         email: $scope.user.email,
         password: $scope.user.password,
-        captcha: $scope.response
+        captcha: $scope.res
       })
       .then( function() {
         ...
