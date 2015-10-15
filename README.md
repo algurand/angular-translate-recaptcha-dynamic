@@ -39,9 +39,9 @@ See [the example file](example/use.html) for a quick usage example.
 <div
     agr-recaptcha
     key="---- YOUR PUBLIC KEY GOES HERE ----"
-    response="__res__"
+    response="res"
 ></div>
-<p ng-hide="__res__">Are you robot?</p>
+<p ng-hide="res">Are you a robot?</p>
 ```
 
 Here, the `key` attribute is passed to the directive's scope, so you can use either a property in your scope or just a hardcoded string. Be careful to use your public key, not your private one.
