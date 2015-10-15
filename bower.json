@@ -1,7 +1,7 @@
 {
   "name": "angular-translate-recaptcha-dynamic",
   "ignore": [],
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "angular-translate-recaptcha-dynamic.js",
   "dependencies": {
     "angular": "1.*",
