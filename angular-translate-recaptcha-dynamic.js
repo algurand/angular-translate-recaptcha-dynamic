@@ -39,16 +39,22 @@ angular.module('pascalprecht.translate')
         attrs.tabindex ? par.tabindex = attrs.key : null;
         
         par.callback = function (response){
+          scope.response = response;
+          scope.$apply();
           scope.onSuccess({response: response});
         }
         
         par['expired-callback'] = function (){
+          scope.response = null;
+          scope.$apply();
           scope.onExpire();
           
         }
         
         $window.grecaptcha.render(element[0], par);
         scope.onCreate();
+        scope.response = null;
+        scope.$apply();
       }
     };
     
@@ -56,6 +62,7 @@ angular.module('pascalprecht.translate')
     var rc = {
       restrict: 'A',
       scope:{
+        response: '=response',
         onSuccess: '&',
         onExpire: '&',
         onCreate: '&'
@@ -65,9 +72,12 @@ angular.module('pascalprecht.translate')
         if (!attrs.key) 
            throw new Error('You need to set the "key" attribute to your public reCaptcha key. If you don\'t have a key, please get one from https://www.google.com/recaptcha/admin/create');
         
-        updateRecaptcha(scope, element, attrs);
-        $rootScope.$on('$translateChangeSuccess', function (event, data) {
+        if (element[0].offsetParent) //element.is(':visible')
           updateRecaptcha(scope, element, attrs);
+        
+        $rootScope.$on('$translateChangeSuccess', function (event, data) {
+          if (element[0].offsetParent) //element.is(':visible')
+            updateRecaptcha(scope, element, attrs);
         });
       }
     }

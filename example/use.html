@@ -18,11 +18,13 @@
     <div
       agr-recaptcha
       key="6LdglQ4TAAAAANvsbiUZ4kiQFYOHn2MLgenSExGk"
+      response="res"
       on-success="verified(response)"
       on-expire="expired()"
       on-create="created()"
     >
     </div>
+    <p ng-hide="res">Are you robot?</p>
     <input type="submit" value="Sumbit" />
   </form>
 </body>

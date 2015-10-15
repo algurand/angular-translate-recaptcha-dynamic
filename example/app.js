@@ -21,18 +21,18 @@ angular.module('test', ['pascalprecht.translate'])
   };
   
 	$scope.created = function(){
-    $scope.response = null;
+    console.log('created');
   };
   
   $scope.verified = function (response) {
-    $scope.response = response;
+    console.log('verified');
 	};
 
 	$scope.expired = function() {
-		$scope.response = null;
+		console.log('expired');
 	};
 
   $scope.register = function(form) {
-    alert($scope.response);
+    alert($scope.res);
   };
 });
