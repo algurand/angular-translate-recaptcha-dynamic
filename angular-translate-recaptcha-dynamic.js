@@ -8,25 +8,23 @@
 
 angular.module('pascalprecht.translate')
 	.directive('agrRecaptcha', function ($rootScope, $window, $translate) {
-
-    var lang;
-    
+   var inprogress;
     var updateRecaptcha = function(scope, element, attrs){
-      if (lang == $translate.use() && $translate.use())
-          return;
-      lang = $translate.use();  
+      if (inprogress) 
+        return;
       
-      
+      inprogress = true;
+     
       angular.element(document).find('#captchaScript').remove();
       
       var po = document.createElement('script'); 
       po.id="captchaScript";
       po.type = 'text/javascript';
       po.async = true;
-      po.src =  '//www.google.com/recaptcha/api.js?render=explicit&onload=agrRecaptchaLoaded&hl=' + lang;
+      po.src =  '//www.google.com/recaptcha/api.js?render=explicit&onload=agrRecaptchaLoaded&hl=' + $translate.use();
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
       
-      //var s = angular.element('<script id="captchaScript" src="//www.google.com/recaptcha/api.js?render=explicit&onload=agrRecaptchaLoaded&hl=' + lang + '"><\/script>');
+      //var s = angular.element('<script id="captchaScript" src="//www.google.com/recaptcha/api.js?render=explicit&onload=agrRecaptchaLoaded&hl=' + $translate.use() + '"><\/script>');
       //angular.element(document).find('head').append(s);
       
       $window.agrRecaptchaLoaded = function(){
@@ -55,6 +53,7 @@ angular.module('pascalprecht.translate')
         scope.onCreate();
         scope.response = null;
         scope.$apply();
+        inprogress = false;
       }
     };
     
